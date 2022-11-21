@@ -36,10 +36,12 @@ router.post('/signup', [
 
             const data = {
                 user: {
-                    id: user.id
+                    id: user.id,
+                    email: user.email
                 }
             };
             const authToken = jwt.sign(data, JWT_SECRET);
+            console.log(data);
             res.status(200).json({ token: authToken, email: user.email, success: true });
 
         } catch (error) { res.status(500).json({ msg: "Internal Server Error", success: false }) }
@@ -63,10 +65,12 @@ router.post('/login', [body('email').isEmail()], async (req, res) => {
 
         const data = {
             user: {
-                id: user.id
+                id: user.id,
+                email: user.email
             }
         };
         const authToken = jwt.sign(data, JWT_SECRET);
+        console.log(data);
         res.status(200).json({ token: authToken, email: user.email, success: true });
 
     } catch (error) { res.status(500).json({ msg: "Internal Server Error", success: false }) }
@@ -79,7 +83,7 @@ router.get('/userInfo', fetchUser, async (req, res) => {
     try {
 
         const userId = req.user.id;
-        const userInfo = await User.findOne({ userId }).select("-password");
+        const userInfo = await User.findById(userId).select("-password");
         res.status(200).json({ user: userInfo, success: true });
 
     } catch (error) { res.status(500).json({ msg: "Internal Sever Error", success: false }) }
