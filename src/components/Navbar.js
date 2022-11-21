@@ -17,7 +17,7 @@ export default function Navbar() {
 
     return (
         <div>
-            <nav className="navbar navbar-dark navbar-expand-lg bg-dark">
+            <nav className="navbar fixed-top navbar-dark navbar-expand-lg bg-dark">
                 <div className="container-fluid">
                     <div className="navbar-brand">App</div>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,8 +35,8 @@ export default function Navbar() {
                         <div>
 
                             {!localStorage.getItem('token') && <div>
-                                <button disabled={location.pathname === '/login'} className='btn btn-primary mx-2' onClick={login}>Login</button>
-                                <button disabled={location.pathname === '/signup'} className='btn btn-primary mx-2' onClick={signup}>Signup</button>
+                                <button disabled={location.pathname === '/login'} className='btn btn-success mx-2' onClick={login}>Login</button>
+                                <button disabled={location.pathname === '/signup'} className='btn btn-success mx-2' onClick={signup}>Signup</button>
                             </div>}
 
                             {localStorage.getItem('token') && <div>

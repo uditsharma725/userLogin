@@ -47,24 +47,41 @@ export default function Signup() {
     }
 
     return (
-        <div>
-            <h2 className='text-center my-4'><span className="badge bg-secondary">App</span> | Signup</h2>
-            <div className='container'>
-                <form className='signup' onSubmit={handleSubmit}>
-                    <div className="mb-3">
-                        <label htmlFor="name" className="form-label">User name</label>
-                        <input type="text" className="form-control" id="name" name="name" value={credentials.name} onChange={onChange} />
+        <div className='mainZ'>
+            <div className='login-containerZ'>
+                <form onSubmit={handleSubmit}>
+                    <img className='avatar' src='avatar.svg' />
+                    <h2>Welcome</h2>
+                    <div className='input-divZ'>
+                        <div className='iZ'>
+                            <i className="fa-solid fa-user"></i>
+                        </div>
+                        <div>
+                            <h5></h5>
+                            <input className='inputZ' type='text' id='name' name='name' value={credentials.name} onChange={onChange} placeholder='username' />
+                        </div>
                     </div>
-                    <div className="mb-3">
-                        <label htmlFor="email" className="form-label">Email address</label>
-                        <input type="email" className="form-control" id="email" name="email" value={credentials.email} onChange={onChange} />
+                    <div className='input-divZ'>
+                        <div className='iZ'>
+                            <i className="fa-solid fa-user"></i>
+                        </div>
+                        <div>
+                            <h5></h5>
+                            <input className='inputZ' type='text' id='email' name='email' value={credentials.email} onChange={onChange} placeholder='email' />
+                        </div>
                     </div>
-                    <div className="mb-3">
-                        <label htmlFor="password" className="form-label">Password</label>
-                        <input type="password" className="form-control" id="password" name='password'
-                            value={credentials.password} onChange={onChange} />
+                    <div className='input-divZ two'>
+                        <div className='iZ'>
+                            <i className="fa-solid fa-lock"></i>
+                        </div>
+                        <div>
+                            <h5></h5>
+                            <input className='inputZ' type='password' id='password' name='password' value={credentials.password} onChange={onChange} placeholder='password' />
+                        </div>
                     </div>
-                    <button disabled={credentials.name.length < 4 || credentials.password.length < 8} type="submit" className="btn btn-primary">Submit</button>
+                    <div className='btn-Z'>
+                        <button disabled={credentials.email.length < 5 || credentials.password.length < 8} type='submit' className='btnZ' >SUBMIT</button>
+                    </div>
                 </form>
             </div>
         </div>

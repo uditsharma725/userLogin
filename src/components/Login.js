@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router'
+import './style.css'
 
 export default function Login() {
 
     const navigate = useNavigate();
-    
+
     const host = 'http://localhost:5000/api/auth/';
     const [credentials, setCredentials] = useState({
         email: "",
@@ -32,7 +33,7 @@ export default function Login() {
         });
 
         const json = await response.json();
-        if(json.success) {
+        if (json.success) {
             localStorage.setItem('token', json.token);
             setCredentials({
                 email: "",
@@ -44,19 +45,32 @@ export default function Login() {
     }
 
     return (
-        <div>
-            <h2 className='text-center my-4'><span className="badge bg-secondary">App</span> | Login</h2>
-            <div className='container'>
-                <form className='login' onSubmit={handleSubmit}>
-                    <div className="mb-3">
-                        <label htmlFor="email" className="form-label">Email address</label>
-                        <input type="email" className="form-control" id="email" name='email' value={credentials.email} onChange={onChange} />
+        <div className='mainZ'>
+            <div className='login-containerZ'>
+                <form onSubmit={handleSubmit}>
+                    <img className='avatar' src='avatar.svg' />
+                    <h2>Welcome</h2>
+                    <div className='input-divZ one focusZ'>
+                        <div className='iZ'>
+                            <i className="fa-solid fa-user"></i>
+                        </div>
+                        <div>
+                            <h5></h5>
+                            <input className='inputZ' type='text' id='email' name='email' value={credentials.email} onChange={onChange} placeholder='email' />
+                        </div>
                     </div>
-                    <div className="mb-3">
-                        <label htmlFor="password" className="form-label">Password</label>
-                        <input type="password" className="form-control" id="password" name='password' value={credentials.password} onChange={onChange} />
+                    <div className='input-divZ two'>
+                        <div className='iZ'>
+                            <i className="fa-solid fa-lock"></i>
+                        </div>
+                        <div>
+                            <h5></h5>
+                            <input className='inputZ' type='password' id='password' name='password' value={credentials.password} onChange={onChange} placeholder='password' />
+                        </div>
                     </div>
-                    <button disabled={credentials.email.length < 5 || credentials.password.length < 8} type="submit" className="btn btn-primary">Submit</button>
+                    <div className='btn-Z'>
+                        <button disabled={credentials.email.length < 5 || credentials.password.length < 8} type='submit' className='btnZ' >SUBMIT</button>
+                    </div>
                 </form>
             </div>
         </div>

@@ -19,7 +19,6 @@ export default function Home() {
     });
     const json = await response.json();
     setUser(json.user);
-    console.log(json.user);
   }
 
   useEffect(() => {
@@ -28,11 +27,9 @@ export default function Home() {
     // eslint-disable-next-line
   }, []);
 
-  console.log(user);
-
   return (
     <div>
-      <h2 className='text-center my-4'><span className="badge bg-secondary">App</span> | Home</h2>
+      <h2 className='text-center home'><span className="badge bg-secondary">App</span> | Home</h2>
       {user && <div>
         <h3 className='text-center my-4'>
           Congratulation you have logged in as <span className="badge bg-secondary">{user.name}</span>
