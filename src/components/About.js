@@ -11,7 +11,7 @@ export default function About() {
 
   return (
     <div>
-      <h2 className='text-center my-4'><span className="badge bg-secondary">App</span> | About</h2>
+      <div className='absolute'>App | About</div>
     </div>
   )
 }

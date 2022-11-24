@@ -48,14 +48,12 @@ export default function Login() {
         <div className='mainZ'>
             <div className='login-containerZ'>
                 <form onSubmit={handleSubmit}>
-                    <img className='avatar' src='avatar.svg' />
                     <h2>Welcome</h2>
                     <div className='input-divZ one focusZ'>
                         <div className='iZ'>
                             <i className="fa-solid fa-user"></i>
                         </div>
                         <div>
-                            <h5></h5>
                             <input className='inputZ' type='text' id='email' name='email' value={credentials.email} onChange={onChange} placeholder='email' />
                         </div>
                     </div>
@@ -64,7 +62,6 @@ export default function Login() {
                             <i className="fa-solid fa-lock"></i>
                         </div>
                         <div>
-                            <h5></h5>
                             <input className='inputZ' type='password' id='password' name='password' value={credentials.password} onChange={onChange} placeholder='password' />
                         </div>
                     </div>

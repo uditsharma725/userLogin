@@ -50,14 +50,12 @@ export default function Signup() {
         <div className='mainZ'>
             <div className='login-containerZ'>
                 <form onSubmit={handleSubmit}>
-                    <img className='avatar' src='avatar.svg' />
                     <h2>Welcome</h2>
                     <div className='input-divZ'>
                         <div className='iZ'>
                             <i className="fa-solid fa-user"></i>
                         </div>
                         <div>
-                            <h5></h5>
                             <input className='inputZ' type='text' id='name' name='name' value={credentials.name} onChange={onChange} placeholder='username' />
                         </div>
                     </div>
@@ -66,7 +64,6 @@ export default function Signup() {
                             <i className="fa-solid fa-user"></i>
                         </div>
                         <div>
-                            <h5></h5>
                             <input className='inputZ' type='text' id='email' name='email' value={credentials.email} onChange={onChange} placeholder='email' />
                         </div>
                     </div>
@@ -75,12 +72,12 @@ export default function Signup() {
                             <i className="fa-solid fa-lock"></i>
                         </div>
                         <div>
-                            <h5></h5>
                             <input className='inputZ' type='password' id='password' name='password' value={credentials.password} onChange={onChange} placeholder='password' />
                         </div>
                     </div>
                     <div className='btn-Z'>
-                        <button disabled={credentials.email.length < 5 || credentials.password.length < 8} type='submit' className='btnZ' >SUBMIT</button>
+                        <button disabled={credentials.email.length < 5 || credentials.password.length < 8} type='submit' className='btnZ' >Submit</button>
+                        <button type='submit' className='btnZ' onClick={()=> navigate('/login')}>Login</button>
                     </div>
                 </form>
             </div>

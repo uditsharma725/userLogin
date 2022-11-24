@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .container {
     width: 100%;
     display: flex;
@@ -7,4 +11,17 @@
 
 .home {
     margin-top: 100px;
+}
+
+@media (max-width:768px){
+    .activeY{
+      width: 100%;
+      height: 100vh;
+      opacity: 0.9;
+      background: #fff;
+    }
+
+    .activeN{
+      top: 1000px
+    }
 }

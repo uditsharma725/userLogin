@@ -29,15 +29,8 @@ export default function Home() {
 
   return (
     <div>
-      <h2 className='text-center home'><span className="badge bg-secondary">App</span> | Home</h2>
-      {user && <div>
-        <h3 className='text-center my-4'>
-          Congratulation you have logged in as <span className="badge bg-secondary">{user.name}</span>
-        </h3>
-        <div className='container'>
-          <h4>Email: <span className="badge bg-secondary">{user.email}</span></h4>
-        </div>
-      </div>}
+      <h2>App | Home</h2>
+      {user && <div></div>}
     </div>
   )
 }

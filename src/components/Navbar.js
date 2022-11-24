@@ -1,52 +1,88 @@
-import React from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
 
 export default function Navbar() {
 
-    const location = useLocation();
     const navigate = useNavigate();
 
-    const login = () => { navigate('/login'); }
-    const signup = () => { navigate('/signup'); }
+    const item = localStorage.getItem('token');
+    const [open, setOpen] = useState(false);
+    let Links = [
+        { name: "Home", link: "/" },
+        { name: "About", link: "/about" },
+        { name: "Skills", link: "/skills" },
+        { name: "Contact", link: "/contact" }
+    ];
 
-    const logout = () => {
-        localStorage.removeItem('token');
-        navigate('/login');
+    const openNav = () => { if (!open) setOpen(!open); }
+    useEffect(() => {
+        openNav();
+        //eslint-disable-next-line
+    }, []);
+
+    const goto = () => {
+        if (item) {
+            localStorage.removeItem('token');
+            navigate('/login');
+        }
+        else navigate('/signup');
+
+        if (!open) openNav();
     }
 
     return (
-        <div>
-            <nav className="navbar fixed-top navbar-dark navbar-expand-lg bg-dark">
-                <div className="container-fluid">
-                    <div className="navbar-brand">App</div>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li className="nav-item">
-                                <Link className={`nav-link ${location.pathname === '/' ? ' active' : ''}`} to='/'>Home</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className={`nav-link ${location.pathname === '/about' ? ' active' : ''}`} to='/about'>About</Link>
-                            </li>
-                        </ul>
-                        <div>
+        <>
+            <div className={`bg-white text-gray-600 
+            font-medium fixed top-0 left-0 right-0 py-3 z-10    
+            transition-all duration-300 ${open ? 'shadow-md' : ''}`}>
 
-                            {!localStorage.getItem('token') && <div>
-                                <button disabled={location.pathname === '/login'} className='btn btn-success mx-2' onClick={login}>Login</button>
-                                <button disabled={location.pathname === '/signup'} className='btn btn-success mx-2' onClick={signup}>Signup</button>
-                            </div>}
+                <nav className='md:flex justify-between'>
 
-                            {localStorage.getItem('token') && <div>
-                                <button className='btn btn-danger mx-2' onClick={logout}>Logout</button>
-                            </div>}
+                    {/* logo and name of the app */}
+                    <a href="/" className='flex items-center cursor-pointer 
+                    my-3 md:ml-11 md:hover:scale-110 ease-in-out duration-500'>
 
+                        <img src='logo.svg' alt='.' className='w-10 h-7 mr-1.5' />
+                        <div className='text-black ease-in-out duration-200
+                        '>
+                            APP | MERN
                         </div>
+
+                    </a>
+
+                    <i className={`fa-solid fa-${open ? 'bars' : 'xmark'} fixed 
+                    top-6 right-2 text-${open ? 'xl' : '2xl'} hover:text-black 
+                    ease-in-out duration-300 cursor-pointer md:hidden hover:scale-110`}
+                        onClick={() => setOpen(!open)}></i>
+
+                    {/* list of the pages */}
+                    <div className={`list absolute md:top-3 md:right-3
+                    ${open ? 'activeN' : 'activeY'}`}>
+
+                        <ul className='md:flex md:items-center md:mr-11'>
+                            {
+                                Links.map((link) => (
+                                    <li key={link.name} className={`hover:text-black 
+                                    ease-in-out duration-300 my-4 mx-5 hover:scale-110 
+                                    flex justify-center active:text-black` }
+                                        onClick={openNav}>
+                                        <Link to={link.link}>
+                                            {link.name}
+                                        </Link>
+                                    </li>
+                                ))
+                            }
+                            <i className={`fa-solid fa-right-${item ? 'from' : 'to'}-bracket mx-5
+                            text-xl cursor-pointer hover:text-black ease-in-out duration-300 
+                            flex justify-center my-4 hover:scale-110`} onClick={goto}></i>
+                        </ul>
+
                     </div>
-                </div>
-            </nav>
-        </div>
+
+                </nav>
+
+            </div>
+        </>
     )
 }
