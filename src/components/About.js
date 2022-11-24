@@ -11,7 +11,7 @@ export default function About() {
 
   return (
     <div>
-      <div className='absolute'>App | About</div>
+      <div className='my-20'>App | About</div>
     </div>
   )
 }

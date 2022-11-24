@@ -48,10 +48,10 @@ export default function Login() {
         <div className='mainZ'>
             <div className='login-containerZ'>
                 <form onSubmit={handleSubmit}>
-                    <h2>Welcome</h2>
+                    <h2>LOGIN</h2>
                     <div className='input-divZ one focusZ'>
                         <div className='iZ'>
-                            <i className="fa-solid fa-user"></i>
+                            <i className="fa-solid fa-envelope"></i>
                         </div>
                         <div>
                             <input className='inputZ' type='text' id='email' name='email' value={credentials.email} onChange={onChange} placeholder='email' />

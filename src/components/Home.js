@@ -28,7 +28,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div>
+    <div className='my-20'>
       <h2>App | Home</h2>
       {user && <div></div>}
     </div>

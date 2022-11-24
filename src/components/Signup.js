@@ -50,7 +50,7 @@ export default function Signup() {
         <div className='mainZ'>
             <div className='login-containerZ'>
                 <form onSubmit={handleSubmit}>
-                    <h2>Welcome</h2>
+                    <h2>SIGNUP</h2>
                     <div className='input-divZ'>
                         <div className='iZ'>
                             <i className="fa-solid fa-user"></i>
@@ -61,7 +61,7 @@ export default function Signup() {
                     </div>
                     <div className='input-divZ'>
                         <div className='iZ'>
-                            <i className="fa-solid fa-user"></i>
+                            <i className="fa-solid fa-envelope"></i>
                         </div>
                         <div>
                             <input className='inputZ' type='text' id='email' name='email' value={credentials.email} onChange={onChange} placeholder='email' />
@@ -77,7 +77,7 @@ export default function Signup() {
                     </div>
                     <div className='btn-Z'>
                         <button disabled={credentials.email.length < 5 || credentials.password.length < 8} type='submit' className='btnZ' >Submit</button>
-                        <button type='submit' className='btnZ' onClick={()=> navigate('/login')}>Login</button>
+                        <button type='submit' className='btnZ' onClick={() => navigate('/login')}>Login</button>
                     </div>
                 </form>
             </div>
