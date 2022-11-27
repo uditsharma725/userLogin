@@ -97,7 +97,13 @@ form h2 {
     color: #555;
 }
 
-.btnZ {
+.btn-Z {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button[type=submit]:enabled {
     display: block;
     width: 80%;
     height: 45px;
@@ -112,16 +118,27 @@ form h2 {
     text-transform: uppercase;
     background-size: 200%;
     font-family: 'Poppins', sans-serif;
-    background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f);
-
+    background: #43cfa1;
+    
 }
 
-.btnZ:hover {
-    background-position: right;
+button[type=submit]:enabled:hover {
+    background: #32be8f;
 }
 
-.btn-Z {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+button[type=submit]:disabled {
+    display: block;
+    width: 80%;
+    height: 45px;
+    border-radius: 25px;
+    margin: 1rem 5px;
+    font-size: 1rem;
+    outline: none;
+    border: none;
+    color: #fff;
+    transition: .5s;
+    text-transform: uppercase;
+    background-size: 200%;
+    font-family: 'Poppins', sans-serif;
+    background: #72dbb8;   
 }

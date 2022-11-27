@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 
-export default function Navbar() {
+export default function Navbar(props) {
 
+    const { showAlert } = props;
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -19,6 +20,7 @@ export default function Navbar() {
         if (item) {
             localStorage.removeItem('token');
             navigate('/login');
+            showAlert('success', 'You have successfully logged out.');  
         }
         else navigate('/signup');
 

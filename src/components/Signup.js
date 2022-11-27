@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router';
 import Spinner from './Spinner';
 
-export default function Signup() {
+export default function Signup(props) {
 
+    const { showAlert } = props;
     const navigate = useNavigate();
 
     const host = 'http://localhost:5000/api/auth/';
@@ -43,8 +44,9 @@ export default function Signup() {
                 password: ""
             });
             navigate('/');
+            showAlert('success', 'You have successfully signed up')
         }
-        else console.log(json.msg);
+        else showAlert('warning', json.msg);
     }
 
     const [loading, setLoading] = useState(true);

@@ -3,8 +3,9 @@ import { useNavigate } from 'react-router'
 import Spinner from './Spinner';
 import './style.css'
 
-export default function Login() {
+export default function Login(props) {
 
+    const { showAlert } = props;
     const navigate = useNavigate();
 
     const host = 'http://localhost:5000/api/auth/';
@@ -41,8 +42,9 @@ export default function Login() {
                 password: ""
             });
             navigate("/");
+            showAlert('success', "You have successfully logged in.")
         }
-        else console.log(json.msg);
+        else showAlert('warning', json.msg);
     }
 
     const [loading, setLoading] = useState(true);
