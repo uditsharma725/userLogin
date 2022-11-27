@@ -12,7 +12,7 @@ const fetchUser = (req, res, next) => {
         req.user = data.user;
         next();
 
-    } catch (error) { res.status(500).json({msg: "Internal Server Erro", success: false}) }
+    } catch (error) { res.status(500).json({msg: "Internal Server Error", success: false}) }
 
 }
 

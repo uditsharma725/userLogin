@@ -75,7 +75,7 @@ router.post('/login', [body('email').isEmail()], async (req, res) => {
 
 });
 
-
+// GETTING USER DATA:
 router.get('/userInfo', fetchUser, async (req, res) => {
 
     try {
