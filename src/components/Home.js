@@ -36,8 +36,14 @@ export default function Home() {
   return (
     <>
       <Spinner loading={loading} />
-      {!loading && <div className='my-20'>
+      {!loading && <div className='mt-24 text-center'>
         <h2>App | Home</h2>
+        <div>
+          {user.name}
+        </div>
+        <div>
+          {user.email}
+        </div>
         {user && <div></div>}
       </div>}
     </>
