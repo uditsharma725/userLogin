@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
+import Spinner from './Spinner';
 
 
 export default function Home() {
@@ -27,10 +28,18 @@ export default function Home() {
     // eslint-disable-next-line
   }, []);
 
+  const [loading, setLoading] = useState(true);
+  setTimeout(() => {
+    setLoading(false);
+  }, 1500);
+
   return (
-    <div className='my-20'>
-      <h2>App | Home</h2>
-      {user && <div></div>}
-    </div>
+    <>
+      <Spinner loading={loading} />
+      {!loading && <div className='my-20'>
+        <h2>App | Home</h2>
+        {user && <div></div>}
+      </div>}
+    </>
   )
 }

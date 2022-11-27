@@ -9,7 +9,6 @@ import Home from "./components/Home";
 import About from "./components/About";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
-import Skills from "./components/Skills";
 import Contact from "./components/Contact";
 
 function App() {
@@ -22,7 +21,6 @@ function App() {
           <Route exact path='/about' element={<About />} />
           <Route exact path='/login' element={<Login />} />
           <Route exact path='/signup' element={<Signup />} />
-          <Route exact path='/skills' element={<Skills />} />
           <Route exact path='/contact' element={<Contact />} />
         </Routes>
       </Router>

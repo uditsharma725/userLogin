@@ -70,12 +70,6 @@ export default function Navbar() {
                             </li>
 
                             <li className={`${liProps}
-                            ${location.pathname === '/skills' ? 'text-black scale-110' : ''}`}
-                                onClick={openNav}>
-                                <Link to='/skills'>Skills</Link>
-                            </li>
-
-                            <li className={`${liProps}
                             ${location.pathname === '/contact'? 'text-black scale-110':''}`} 
                             onClick={openNav}>
                                 <Link to='/contact'>Contact</Link>

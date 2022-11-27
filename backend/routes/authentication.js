@@ -41,7 +41,6 @@ router.post('/signup', [
                 }
             };
             const authToken = jwt.sign(data, JWT_SECRET);
-            console.log(data);
             res.status(200).json({ token: authToken, email: user.email, success: true });
 
         } catch (error) { res.status(500).json({ msg: "Internal Server Error", success: false }) }
@@ -70,7 +69,6 @@ router.post('/login', [body('email').isEmail()], async (req, res) => {
             }
         };
         const authToken = jwt.sign(data, JWT_SECRET);
-        console.log(data);
         res.status(200).json({ token: authToken, email: user.email, success: true });
 
     } catch (error) { res.status(500).json({ msg: "Internal Server Error", success: false }) }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router';
+import Spinner from './Spinner';
 
 export default function Signup() {
 
@@ -46,41 +47,49 @@ export default function Signup() {
         else console.log(json.msg);
     }
 
+    const [loading, setLoading] = useState(true);
+    setTimeout(() => {
+        setLoading(false);
+    }, 1500);
+
     return (
-        <div className='mainZ'>
-            <div className='login-containerZ'>
-                <form onSubmit={handleSubmit}>
-                    <h2>SIGNUP</h2>
-                    <div className='input-divZ'>
-                        <div className='iZ'>
-                            <i className="fa-solid fa-user"></i>
+        <>
+            {loading && <Spinner loading={loading} />}
+            {!loading && <div className='mainZ'>
+                <div className='login-containerZ'>
+                    <form onSubmit={handleSubmit}>
+                        <h2>SIGNUP</h2>
+                        <div className='input-divZ'>
+                            <div className='iZ'>
+                                <i className="fa-solid fa-user"></i>
+                            </div>
+                            <div>
+                                <input className='inputZ' type='text' id='name' name='name' value={credentials.name} onChange={onChange} placeholder='username' />
+                            </div>
                         </div>
-                        <div>
-                            <input className='inputZ' type='text' id='name' name='name' value={credentials.name} onChange={onChange} placeholder='username' />
+                        <div className='input-divZ'>
+                            <div className='iZ'>
+                                <i className="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <input className='inputZ' type='text' id='email' name='email' value={credentials.email} onChange={onChange} placeholder='email' />
+                            </div>
                         </div>
-                    </div>
-                    <div className='input-divZ'>
-                        <div className='iZ'>
-                            <i className="fa-solid fa-envelope"></i>
+                        <div className='input-divZ two'>
+                            <div className='iZ'>
+                                <i className="fa-solid fa-lock"></i>
+                            </div>
+                            <div>
+                                <input className='inputZ' type='password' id='password' name='password' value={credentials.password} onChange={onChange} placeholder='password' />
+                            </div>
                         </div>
-                        <div>
-                            <input className='inputZ' type='text' id='email' name='email' value={credentials.email} onChange={onChange} placeholder='email' />
+                        <div className='btn-Z'>
+                            <button disabled={credentials.email.length < 5 || credentials.password.length < 8} type='submit' className='btnZ' >Submit</button>
+                            <button type='submit' className='btnZ' onClick={() => navigate('/login')}>Login</button>
                         </div>
-                    </div>
-                    <div className='input-divZ two'>
-                        <div className='iZ'>
-                            <i className="fa-solid fa-lock"></i>
-                        </div>
-                        <div>
-                            <input className='inputZ' type='password' id='password' name='password' value={credentials.password} onChange={onChange} placeholder='password' />
-                        </div>
-                    </div>
-                    <div className='btn-Z'>
-                        <button disabled={credentials.email.length < 5 || credentials.password.length < 8} type='submit' className='btnZ' >Submit</button>
-                        <button type='submit' className='btnZ' onClick={() => navigate('/login')}>Login</button>
-                    </div>
-                </form>
-            </div>
-        </div>
+                    </form>
+                </div>
+            </div>}
+        </>
     )
 }
